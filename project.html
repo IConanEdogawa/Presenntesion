@@ -1,0 +1,80 @@
+// INDEX ---- 1
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Validation</h2>
+
+<p>Enter a number and click OK:</p>
+
+<input id="id1" type="number" min="100" max="300" required>
+<button onclick="myFunction()">OK</button>
+
+<p>If the number is less than 100 or greater than 300, an error message will be displayed.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  const inpObj = document.getElementById("id1");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo").innerHTML = inpObj.validationMessage;
+  } else {
+    document.getElementById("demo").innerHTML = "Input OK";
+  } 
+} 
+</script>
+
+</body>
+</html> -->
+
+
+// INDEX ---- 2
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пример setCustomValidity()</title>
+</head>
+<body>
+
+<h1>Пример setCustomValidity()</h1>
+
+<form id="myForm">
+    <label for="password">Введите пароль:</label>
+    <input type="password" id="password" name="password" minlength="8" required>
+    <span class="error" id="passwordError"></span>
+    <br><br>
+    <button type="submit">Отправить</button>
+</form>
+
+<script>
+    const form = document.getElementById('myForm');
+    const passwordInput = document.getElementById('password');
+    const passwordError = document.getElementById('passwordError');
+
+    passwordInput.addEventListener('input', function() {
+        if (passwordInput.validity.tooShort) {
+            passwordInput.setCustomValidity('Пароль должен содержать минимум 8 символов');
+        } else {
+            passwordInput.setCustomValidity('');
+        }
+
+        passwordError.textContent = passwordInput.validationMessage;
+    });
+
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            passwordError.textContent = passwordInput.validationMessage;
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
